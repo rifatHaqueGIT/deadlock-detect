@@ -86,8 +86,10 @@ parseLine( std::string & proc_name, std::string & res_name, Edge & etype)
 //   w2i.get("world") = 1
 //   w2i.get("hello") = 0
 //
-// you probably won't need this, but if you prefer to work with numbers
-// rather than strings, it might help
+// HINT: this "may" help you get a bit more performance
+// in your cycle finding algorithm, since indexed arrays are faster
+// than hash tables... if you don't know what that means,
+// safely ignore this hint :)
 struct Word2Int {
   int
   get(const std::string & w) {
