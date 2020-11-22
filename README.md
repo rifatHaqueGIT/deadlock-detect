@@ -25,8 +25,8 @@ compile and test your code.
 
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | :-------- | :-------------: | :-----------: | :-----------------: | :--------------: |
-| test1.txt| -1 | | | |
-| test2.txt| | | | |
+| test1.txt| -1 | [] | 0.000ss| 0.000ss |
+| test2.txt| 5|[5,7] | 0.0000s| 0.0000s|
 | test3.txt|  | | | |
 | test4.txt|  | | | |
 | test5.txt|  | | | |
