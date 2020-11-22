@@ -3,30 +3,30 @@
 #include "common.h"
 
 /// this is the function you need to implement
-/// parameter lines[] contains a list of request and assignment edges
+/// parameter edges[] contains a list of request and assignment edges
 ///   example of a request edge, process "p1" resource "r1"
 ///     "p1 -> r1"
 ///   example of an assignment edge, process "XYz" resource "XYz"
 ///     "XYz <- XYz"
-/// Parameters deadlock_line_number and cycle[] are used to return
+/// Parameters edge_index and cycle[] are used to return
 /// results back to the caller.
 ///
-/// You need to process lines[] one edge at a time, and run a deadlock
+/// You need to process edges[] one edge at a time, and run a deadlock
 /// detection after each edge.
 ///
-/// As soon as you detecte a deadlock, you need to set deadlock_line_number to the index
-/// in lines[] that caused the deadlock. For example, lines[7] caused the deadlock,
-/// then set deadlock_line_number=7. You must also populete cycle[] with the names of
+/// As soon as you detecte a deadlock, you need to set edge_index to the index of the edge
+/// in edges[] that caused the deadlock. For example, edges[7] caused the deadlock,
+/// then set edge_index=7. You must also populete cycle[] with the names of
 /// processes that are in a deadlock. You can then return from the function without
-/// processing any other lines.
+/// processing any other edges.
 ///
-/// To indicate deadlock was detected after processing all lines, you must
-/// set deadlock_line_number = -1 and clear cycle[] with cycle.clear()
+/// To indicate deadlock was detected after processing all edges, you must
+/// set edge_index = -1 and clear cycle[] e.g. by calling cycle.clear()
 ///
 void detect_deadlock(
-    const std::vector<std::string>& lines, int& deadlock_line_number,
-    std::vector<std::string>& cycle)
+    const std::vector<std::string> & edges, int & edge_index, std::vector<std::string> & cycle)
 {
+    // let's try to guess the results :)
     cycle = split("12 7 7");
-    deadlock_line_number = 6;
+    edge_index = 6;
 }

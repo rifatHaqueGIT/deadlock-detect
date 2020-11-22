@@ -23,7 +23,7 @@ static bool vscmp(VS v1, VS v2)
     return v1 == v2;
 }
 
-static VS splitc(const std::string& s, char split_char = '\n')
+static VS splitc(const std::string & s, char split_char = '\n')
 {
     VS res;
     std::stringstream iss(s);
@@ -37,33 +37,33 @@ static VS splitc(const std::string& s, char split_char = '\n')
     return res;
 };
 
-static void test(const std::string& test_name, const VS& lines, int lineno, const VS& cycle)
+static void test(const std::string & test_name, const VS & lines, int lineno, const VS & cycle)
 {
     std::cout << "- running " << std::setw(20) << std::left << test_name << " ..." << std::flush;
 
-    int ret_line_no = 123;
+    int ret_edge_ind = 123;
     Timer timer;
     std::vector<std::string> ret_cycle;
-    detect_deadlock(lines, ret_line_no, ret_cycle);
+    detect_deadlock(lines, ret_edge_ind, ret_cycle);
     std::cout << "  - finished in " << std::fixed << std::setprecision(4) << timer.elapsed() << "s";
-    if (ret_line_no == lineno && vscmp(cycle, ret_cycle)) {
+    if (ret_edge_ind == lineno && vscmp(cycle, ret_cycle)) {
         std::cout << " PASSED\n";
         return;
     }
 
     int mw = 8;
-    for (const auto& line : lines)
+    for (const auto & line : lines)
         mw = std::max(mw, int(line.size()));
     std::cout << " FAILED.\n"
               << "  - input:\n";
     std::cout << "    +" + std::string(mw + 2, '-') + "+\n";
-    for (const auto& line : lines)
+    for (const auto & line : lines)
         std::cout << "    | " + line + std::string(mw - line.size(), ' ') + " |\n";
 
     std::cout << "    +" + std::string(mw + 2, '-') + "+\n";
-    std::cout << "  - expected line_no  : " << std::setw(5) << std::left << lineno
+    std::cout << "  - expected index  : " << std::setw(5) << std::left << lineno
               << " cycle: " << join(cycle, ",") << "\n"
-              << "  - calculated line_no: " << std::setw(5) << std::left << ret_line_no
+              << "  - calculated index: " << std::setw(5) << std::left << ret_edge_ind
               << " cycle: " << join(ret_cycle, ",") << "\n";
 }
 
@@ -75,16 +75,24 @@ static int run_tests()
     test("one edge test", { "1 -> 1" }, -1, {});
     test("tiny deadlock", splitc("p1 -> m1|p1 <- m2|p2 -> m2|p2 <- m1", '|'), 3, { "p1", "p2" });
     test(
-        "tiny deadlock2", splitc("p1 -> m1|p1 <- m2|p2 -> m2|p2 <- m1|a -> b", '|'), 3,
+        "tiny deadlock2",
+        splitc("p1 -> m1|p1 <- m2|p2 -> m2|p2 <- m1|a -> b", '|'),
+        3,
         { "p1", "p2" });
     test(
-        "tiny deadlock2", splitc("p1 -> m1|p1 <- m2|p2 -> m2|a -> b|p2 <- m1", '|'), 4,
+        "tiny deadlock2",
+        splitc("p1 -> m1|p1 <- m2|p2 -> m2|a -> b|p2 <- m1", '|'),
+        4,
         { "p1", "p2" });
     test(
-        "tiny deadlock3", splitc("x <- y|p1 -> m1|p1 <- m2|p2 -> m2|a -> b|p2 <- m1", '|'), 5,
+        "tiny deadlock3",
+        splitc("x <- y|p1 -> m1|p1 <- m2|p2 -> m2|a -> b|p2 <- m1", '|'),
+        5,
         { "p1", "p2" });
     test(
-        "tiny deadlock4", splitc("x -> m1|p1 -> m1|p1 <- m2|p2 -> m2|y -> m1|p2 <- m1", '|'), 5,
+        "tiny deadlock4",
+        splitc("x -> m1|p1 -> m1|p1 <- m2|p2 -> m2|y -> m1|p2 <- m1", '|'),
+        5,
         splitc("p1,p2,x,y", ','));
     test(
         "test1.txt",
@@ -93,7 +101,8 @@ static int run_tests()
                "plato   ->  2        \n"
                "socrates -> fork1    \n"
                "socrates <- 2        "),
-        -1, {});
+        -1,
+        {});
 
     return 0;
 }
@@ -129,32 +138,33 @@ static int run_graph()
     }
 
     std::cout << "Running detect_deadlock()...\n";
-    VS cycle;
+    VS cycle { "000", "1", "222" };
+    int edge_index = -999;
     Timer timer;
-    detect_deadlock(all_lines, line_no, cycle);
+    detect_deadlock(all_lines, edge_index, cycle);
     std::cout << "\n"
-              << "deadlock_line_number = " << line_no << "\n"
-              << "               cycle = [" << join(cycle, ",") << "]\n"
-              << "           real time : " << std::fixed << std::setprecision(4) << timer.elapsed()
+              << "edge_index : " << edge_index << "\n"
+              << "cycle      : [" << join(cycle, ",") << "]\n"
+              << "real time  : " << std::fixed << std::setprecision(4) << timer.elapsed()
               << "s\n\n";
     // check for duplicates in cycle
     std::set<std::string> pnames1;
-    for (auto const& pname : cycle)
+    for (auto const & pname : cycle)
         pnames1.insert(pname);
     if (pnames1.size() != cycle.size())
         std::cout << "Warning: duplicate entries in cycle.\n";
     std::set<std::string> pnames2;
-    for (auto const& line : all_lines)
+    for (auto const & line : all_lines)
         pnames2.insert(split(line)[0]);
     std::vector<std::string> unknowns;
-    for (auto const& pname : pnames1)
+    for (auto const & pname : pnames1)
         if (pnames2.find(pname) == pnames2.end())
             unknowns.push_back(pname);
     if (unknowns.size() > 0)
         std::cout << "Warning: unknown processes in cycle: [" << join(unknowns, ",") << "]\n";
     return 0;
 }
-static int usage(const std::string& pname)
+static int usage(const std::string & pname)
 {
     std::cout << "Usage:\n"
               << "    " << pname << " [test]\n"
@@ -164,7 +174,7 @@ static int usage(const std::string& pname)
     return -1;
 }
 
-static int cppmain(const VS& args)
+static int cppmain(const VS & args)
 {
     if (args.size() == 2 && args[1] == "test")
         return run_tests();
@@ -174,7 +184,7 @@ static int cppmain(const VS& args)
         return usage(args[0]);
 }
 
-int main(int argc, char** argv)
+int main(int argc, char ** argv)
 {
     try {
         return cppmain({ argv + 0, argv + argc });

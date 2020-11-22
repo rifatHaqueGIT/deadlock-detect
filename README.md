@@ -25,7 +25,7 @@ compile and test your code.
 
 The repository includes several test files. Here are correct results for these test files.
 
-| test file   | correct line_no | correct cycle | minimum timings     | good timings     |
+| test file   | correct edge_index | correct cycle | minimum timings     | good timings     |
 | :---------- | :-------------: | :-----------: | :-----------------: | :--------------: |
 | `test1.txt` | `-1`            | `[]`          | `0.0000s`           | `0.0000s`        |
 | `test2.txt` | `5`             | `[5,7]`       | `0.0000s`           | `0.0000s`        |
