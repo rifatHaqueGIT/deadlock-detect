@@ -21,4 +21,14 @@ Only modify and submit the `deadlock_detector.cpp` file. Your TAs will
 supply their own versions of the other files (such as main.cpp) to
 compile and test your code.
 
+## correct outputs
+
+| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
+| test1.txt|  |
+| test2.txt|  |
+| test3.txt|  |
+| test4.txt|  |
+| test5.txt|  |
+| test6.txt|  |
+
 

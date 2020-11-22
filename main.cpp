@@ -135,17 +135,10 @@ static int run_graph()
     VS cycle;
     Timer timer;
     detect_deadlock(all_lines, line_no, cycle);
-    if (cycle.size() == 0)
-        std::cout << "No deadlock.\n";
-    else {
-        std::cout << "Deadlock on line[" << line_no << "] = ";
-        if (line_no >= int(all_lines.size()) || line_no < 0)
-            std::cout << " <invalid line_no!>\n";
-        else
-            std::cout << "'" << all_lines[line_no] << "'\n";
-        std::cout << "Deadlocked processes: " << join(cycle, ", ") << "\n";
-    }
-    std::cout << "Elapsed time: " << std::fixed << std::setprecision(4) << timer.elapsed() << "s\n";
+    std::cout << "\n"
+              << "deadlock_line_number = " << line_no << "\n"
+              << "               cycle = [\"" << join(cycle, "\",\"") << "\"]\n"
+              << "           real time : " << std::fixed << std::setprecision(4) << timer.elapsed() << "s\n";
 
     return 0;
 }
