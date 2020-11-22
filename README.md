@@ -24,11 +24,16 @@ compile and test your code.
 ## correct outputs
 
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
-| test1.txt|  |
-| test2.txt|  |
-| test3.txt|  |
-| test4.txt|  |
-| test5.txt|  |
-| test6.txt|  |
+| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
+| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
+| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
+
+# other
+| test1.txt| -1 | | | |
+| test2.txt| | | | |
+| test3.txt|  | | | |
+| test4.txt|  | | | |
+| test5.txt|  | | | |
+| test6.txt|  | | | |
 
 
