@@ -24,6 +24,7 @@ compile and test your code.
 ## correct outputs
 
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
+| --------- | --------------- | ------------- | ------------------- | ---------------- |
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
