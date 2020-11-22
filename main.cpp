@@ -151,7 +151,7 @@ static int run_graph()
         if (pnames2.find(pname) == pnames2.end())
             unknowns.push_back(pname);
     if (unknowns.size() > 0)
-        std::cout << "Warning: unknown processes in cycle: [" << join(unknowns,",") << "]\n";
+        std::cout << "Warning: unknown processes in cycle: [" << join(unknowns, ",") << "]\n";
     return 0;
 }
 static int usage(const std::string& pname)
