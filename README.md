@@ -25,11 +25,11 @@ compile and test your code.
 
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | :-------- | :-------------: | :-----------: | :-----------------: | :--------------: |
-| test1.txt| -1 | `[]` | 0.000ss| 0.000ss |
-| test2.txt| 5|`[5,7]` | 0.0000s| 0.0000s|
-| test3.txt|  | | | |
-| test4.txt|  | | | |
-| test5.txt|  | | | |
-| test6.txt| 9903 | `[ab,cd,ef]` |8.9431s |0.8771s |
+| `test1.txt` | `-1` | `[]` | `0.0000s` | `0.0000s` |
+| `test2.txt` | `5` |`[5,7]` | `0.0000s` | `0.0000s` |
+| `test3.txt` | `3`  | `[p7,p3]`| `0.0000s` | `0.0000s` |
+| `test4.txt` | `3`| `[12,7]` | `0.0000s` | `0.0000s` |
+| `test5.txt` | `6` | `[2,77]` | `0.0000s` | `0.0000s` |
+| `test6.txt` | `9903` | `[ab,cd,ef]` |`8.9431s` |`0.8771s` |
 
 
