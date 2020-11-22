@@ -25,16 +25,11 @@ compile and test your code.
 
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | --------- | --------------- | ------------- | ------------------- | ---------------- |
-| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
-| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
-| test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
-
-# other
 | test1.txt| -1 | | | |
 | test2.txt| | | | |
 | test3.txt|  | | | |
 | test4.txt|  | | | |
 | test5.txt|  | | | |
-| test6.txt|  | | | |
+| test6.txt| 9903 | [ab,cd,ef] |8.9431s |0.8771s |
 
 
