@@ -23,6 +23,7 @@ compile and test your code.
 
 ## correct outputs
 
+| :-------- | :-------------: | :-----------: | :-----------------: | :--------------: |
 | test file | correct line_no | correct cycle | minimum<br> timings | good<br> timings |
 | :-------- | :-------------: | :-----------: | :-----------------: | :--------------: |
 | `test1.txt` | `-1` | `[]` | `0.0000s` | `0.0000s` |
