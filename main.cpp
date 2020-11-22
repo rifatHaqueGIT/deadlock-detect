@@ -11,6 +11,7 @@
 #include <iostream>
 #include <memory>
 #include <numeric>
+#include <set>
 #include <vector>
 
 using VS = std::vector<std::string>;
@@ -49,10 +50,6 @@ static void test(const std::string& test_name, const VS& lines, int lineno, cons
         std::cout << " PASSED\n";
         return;
     }
-    // auto mw = std::accumulate(lines.begin(), lines.end(), 8, [](int & m, const  std::string
-    // &line) -> int {
-    //     return std::max(m, int(line.size()));
-    // });
 
     int mw = 8;
     for (const auto& line : lines)
@@ -137,9 +134,24 @@ static int run_graph()
     detect_deadlock(all_lines, line_no, cycle);
     std::cout << "\n"
               << "deadlock_line_number = " << line_no << "\n"
-              << "               cycle = [\"" << join(cycle, "\",\"") << "\"]\n"
-              << "           real time : " << std::fixed << std::setprecision(4) << timer.elapsed() << "s\n";
-
+              << "               cycle = [" << join(cycle, ",") << "]\n"
+              << "           real time : " << std::fixed << std::setprecision(4) << timer.elapsed()
+              << "s\n\n";
+    // check for duplicates in cycle
+    std::set<std::string> pnames1;
+    for (auto const& pname : cycle)
+        pnames1.insert(pname);
+    if (pnames1.size() != cycle.size())
+        std::cout << "Warning: duplicate entries in cycle.\n";
+    std::set<std::string> pnames2;
+    for (auto const& line : all_lines)
+        pnames2.insert(split(line)[0]);
+    std::vector<std::string> unknowns;
+    for (auto const& pname : pnames1)
+        if (pnames2.find(pname) == pnames2.end())
+            unknowns.push_back(pname);
+    if (unknowns.size() > 0)
+        std::cout << "Warning: unknown processes in cycle: [" << join(unknowns,",") << "]\n";
     return 0;
 }
 static int usage(const std::string& pname)
