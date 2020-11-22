@@ -1,0 +1,4 @@
+BasedOnStyle: WebKit
+AlignAfterOpenBracket: AlwaysBreak
+AllowAllParametersOfDeclarationOnNextLine: 'true'
+ColumnLimit: '100'
