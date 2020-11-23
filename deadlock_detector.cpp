@@ -1,6 +1,7 @@
 // this is the ONLY file you should edit and submit to D2L
 
 #include "common.h"
+#include "deadlock_detector.h"
 
 /// this is the function you need to implement
 /// parameter edges[] contains a list of request and assignment edges
@@ -24,7 +25,9 @@
 /// set edge_index = -1 and clear cycle[] e.g. by calling cycle.clear()
 ///
 void detect_deadlock(
-    const std::vector<std::string> & edges, int & edge_index, std::vector<std::string> & cycle)
+    const std::vector<std::string> & edges,
+    int & edge_index,
+    std::vector<std::string> & cycle)
 {
     // let's try to guess the results :)
     cycle = split("12 7 7");
