@@ -1,7 +1,7 @@
 BasedOnStyle: WebKit
 AlignAfterOpenBracket: AlwaysBreak
 AllowAllParametersOfDeclarationOnNextLine: true
-ColumnLimit: 100
+ColumnLimit: 80
 PointerAlignment: Middle
 BinPackParameters: false
 BinPackArguments: false

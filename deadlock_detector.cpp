@@ -1,35 +1,30 @@
 // this is the ONLY file you should edit and submit to D2L
 
-#include "common.h"
 #include "deadlock_detector.h"
+#include "common.h"
 
-/// this is the function you need to implement
-/// parameter edges[] contains a list of request and assignment edges
+/// this is the function you need to (re)implement
+///
+/// parameter edges[] contains a list of request- and assignment- edges
 ///   example of a request edge, process "p1" resource "r1"
 ///     "p1 -> r1"
 ///   example of an assignment edge, process "XYz" resource "XYz"
 ///     "XYz <- XYz"
-/// Parameters edge_index and cycle[] are used to return
-/// results back to the caller.
 ///
 /// You need to process edges[] one edge at a time, and run a deadlock
-/// detection after each edge.
+/// detection after each edge. As soon as you detect a deadlock, your function
+/// needs to stop processing edges and return an instance of Result structure
+/// with edge_index set to the index that caused the deadlock, and cycle set
+/// to contain with names of processes that are in the deadlock.
 ///
-/// As soon as you detecte a deadlock, you need to set edge_index to the index of the edge
-/// in edges[] that caused the deadlock. For example, edges[7] caused the deadlock,
-/// then set edge_index=7. You must also populete cycle[] with the names of
-/// processes that are in a deadlock. You can then return from the function without
-/// processing any other edges.
+/// To indicate no deadlock was detected after processing all edges, you must
+/// return Result with edge_index = -1 and empy cycle[].
 ///
-/// To indicate deadlock was detected after processing all edges, you must
-/// set edge_index = -1 and clear cycle[] e.g. by calling cycle.clear()
-///
-void detect_deadlock(
-    const std::vector<std::string> & edges,
-    int & edge_index,
-    std::vector<std::string> & cycle)
+Result detect_deadlock(const std::vector<std::string> & edges)
 {
     // let's try to guess the results :)
-    cycle = split("12 7 7");
-    edge_index = 6;
+    Result result;
+    result.cycle = split("12 7 7");
+    result.edge_index = 6;
+    return result;
 }

@@ -10,11 +10,6 @@ To run the resulting code on file test1.txt:
 $ ./deadlock < test1.txt
 ```
 
-To run some built-in mini tests:
-```
-$ ./deadlock test
-```
-
 ## IMPORTANT
 
 Only modify and submit the `deadlock_detector.cpp` file. Your TAs will
@@ -33,6 +28,6 @@ The repository includes several test files. Here are correct results for these t
 | `test4.txt` | `3`             | `[12,7]`      | `0.0000s`           | `0.0000s`        |
 | `test5.txt` | `6`             | `[2,77]`      | `0.0000s`           | `0.0000s`        |
 | `test6.txt` | `9903`          | `[ab,cd,ef]`  |`8.9431s`            | `0.8771s`        |
-| `test7.txt` | `29941`          | `[is,this,answer,the,correct]`  |`191.7872s`    | `8.0726s`        |
+| `test7.txt` | `29941`         | `[is,this,answer,the,correct]`  |`191.7872s`    | `8.0726s`        |
 
 
