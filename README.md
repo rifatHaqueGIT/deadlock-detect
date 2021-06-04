@@ -20,7 +20,7 @@ compile and test your code.
 
 These are the correct results for the test files included in this repo.
 
-| test file   | correct edge_index | correct dl_procs | minimum timings     | good timings     |
+| filename   | correct `edge_index` | correct `dl_procs` | minimum timings     | good timings     |
 | :---------- | :-------------: | :-----------: | :-----------------: | :--------------: |
 | `test1.txt` | `-1`            | `[]`          | `0.0000s`           | `0.0000s`        |
 | `test2.txt` | `5`             | `[5,7]`       | `0.0000s`           | `0.0000s`        |
