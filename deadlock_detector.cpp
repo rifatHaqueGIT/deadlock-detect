@@ -14,17 +14,17 @@
 /// You need to process edges[] one edge at a time, and run a deadlock
 /// detection after each edge. As soon as you detect a deadlock, your function
 /// needs to stop processing edges and return an instance of Result structure
-/// with edge_index set to the index that caused the deadlock, and cycle set
+/// with edge_index set to the index that caused the deadlock, and dl_procs set
 /// to contain with names of processes that are in the deadlock.
 ///
 /// To indicate no deadlock was detected after processing all edges, you must
-/// return Result with edge_index = -1 and empy cycle[].
+/// return Result with edge_index = -1 and empty dl_procs[].
 ///
 Result detect_deadlock(const std::vector<std::string> & edges)
 {
     // let's try to guess the results :)
     Result result;
-    result.cycle = split("12 7 7");
+    result.dl_procs = split("12 7 7");
     result.edge_index = 6;
     return result;
 }

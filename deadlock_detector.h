@@ -8,9 +8,7 @@
 
 struct Result {
     int edge_index;
-    std::vector<std::string> cycle;
+    std::vector<std::string> dl_procs;
 };
 
-/// this is the function you need to implement in deadlock_detector.cpp
-/// do not edit this signature !!!
 Result detect_deadlock(const std::vector<std::string> & edges);

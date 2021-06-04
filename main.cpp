@@ -52,7 +52,7 @@ static void run_graph()
     Result res = detect_deadlock(all_lines);
     std::cout << "\n"
               << "edge_index : " << res.edge_index << "\n"
-              << "cycle      : [" << join(res.cycle, ",") << "]\n"
+              << "dl_procs   : [" << join(res.dl_procs, ",") << "]\n"
               << "real time  : " << std::fixed << std::setprecision(4) << timer.elapsed()
               << "s\n\n";
 }
@@ -72,4 +72,6 @@ static int cppmain(const VS & args)
     return 0;
 }
 
-int main(int argc, char ** argv) { return cppmain({ argv + 0, argv + argc }); }
+int main(int argc, char ** argv) 
+{ 
+  return cppmain({ argv + 0, argv + argc }); }
